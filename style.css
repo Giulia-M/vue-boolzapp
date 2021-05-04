@@ -1,0 +1,136 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #dadbd5;
+}
+.wrapper {
+    position: relative;
+   
+}
+.bg-green {
+    background-color: #009788;
+    padding: 50px;
+    position: absolute;
+    top:0;
+    right:0;
+    left: 0;
+    z-index: -1;
+}
+.container-main {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.col-sx {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: #dadbd5;
+
+}
+.col-dx {
+    width: 70%;
+}
+.avatar-img {
+    width: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 5px;
+}
+.wr-profilo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;  
+}
+.icone-wrapper {
+    color: gray;
+}
+.padd-10 {
+    padding: 10px;
+}
+.padd-r-10 {
+    padding-right: 10px;
+}
+.wrap-bell {
+    color: #9de0fd;
+    background-color:#feffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 5px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.sec-notification {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    background-color:  #9de0fd;
+    padding-bottom: 10px;
+    
+}
+.wrap-bell i {
+    position: relative;
+    transform: translateY(80%);
+
+}
+.notification-par p {
+    font-size: 10px;
+}
+.notification-par p:first-of-type {
+    font-weight: 600;
+}
+.underline {
+    text-decoration: underline;
+}
+
+.input-text {
+    width: 100%;
+    display: inline-block;
+    border-radius: 25px;
+    padding: 5px;
+    border: none;
+}
+.wr-input {
+    position: relative;
+    background-color: #ededed;
+    padding: 10px 5px;
+}
+.pos-abs {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    font-size: 13px;
+    color: gray;
+
+}
+
+.wr-input div input {
+    padding-left: 25px;
+}
+.bg-white {
+    background-color: #fff;
+
+}
+.img-chat {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.bg-white ul li {
+    list-style: none;
+} 
+.dis-flex {
+    display: flex;
+}
