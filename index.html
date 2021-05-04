@@ -71,16 +71,16 @@
 
             </div>
 
-            <!-- sezione chat -->
+            <!-- sezione (DESTRA) chat: elenco contatti   -->
             <div class="bg-white">
 
                 <ul>
-                    <li v-for=" element in contacts "  class="dis-flex">
+                    <li v-for=" contact in contacts" @click="toUserClick(contact)" class="dis-flex">
                         <div class="wr-img-chat">
-                            <img class="img-chat" :src="element.avatar" alt="avatar">
+                            <img class="img-chat" :src="contact.avatar" alt="avatar">
                         </div>
                         <div class="text-chat">
-                            <h4>{{element.name}}</h4>
+                            <h4>{{contact.name}}</h4>
                             <p>Non ci sono messaggi</p>
                         </div>
                     </li>
@@ -106,11 +106,11 @@
             <div class="utente-section">
                 
 
-                <div class="wr-img-chat">
-                    <img class="img-chat" src="img/avatar_2.jpg" alt="">
+                <div class="wr-img-chat ">
+                    <img class="img-chat" :src="activeUser.avatar" alt="">
                 </div>
                 <div> 
-                    <p>Harry</p>
+                    <p>{{activeUser.name}}</p>
                     <p>Ultimo accesso alle ore 9.18</p>
                 </div>
                
@@ -125,14 +125,15 @@
             </div>
 
             <!-- chat section -->
-            <div class="sec-message-utente clearfix">
+            <div class="sec-message-utente">
                 <div class="green-mess-me">
                     <p>ciao come stai?</p>
                     <p>9.30</p>
                     <i class="fas fa-caret-right caret-absolute"></i>
                 </div>
-                <div class="white-message">
-                    <p>Tutto bene tu?</p>
+                <!-- messaggi utente  -->
+                <div class="white-message" v-for="message in activeUser.message">
+                    <p>{{message.text}}</p>
                     <p>9.30</p>
                     <i class="fas fa-caret-left caret-absolute-white"></i>
                 </div>
