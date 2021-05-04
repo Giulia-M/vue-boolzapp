@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 </head>
+
 <body>
     <div class="wrapper">
 
         <div class="bg-green">
-    
+
         </div>
-        
+
     </div>
 
     <!-- contenitore centrale  -->
@@ -28,15 +32,17 @@
             <!-- profilo  -->
             <div>
                 <div class="wr-profilo">
+                    <div>
 
-                    <img class="avatar-img" src="img/avatar_io.jpg" alt="avatar">
+                        <img class="avatar-img" src="img/avatar_io.jpg" alt="avatar">
+                    </div>
                     <div class="icone-wrapper">
                         <i class="fas fa-circle-notch"></i>
 
                         <i class="fas fa-comment-alt padd-10"></i>
-                        
+
                         <i class="fas fa-ellipsis-v padd-r-10"></i>
-                        
+
                     </div>
                 </div>
             </div>
@@ -47,7 +53,7 @@
 
                     <i class="fas fa-bell-slash"></i>
                 </div>
-                <div class="notification-par">
+                <div class="notification-parag">
 
                     <p>Ricevi notifiche di nuovi messaggi</p>
                     <p class="underline">Attiva notifiche desktop</p>
@@ -56,10 +62,10 @@
 
             <!-- input -->
             <div class="wr-input">
-                
+
                 <div>
                     <input class="input-text" type="text" placeholder="Cerca o inizia una nuova chat">
-                    <i class="fas fa-search pos-abs "></i>
+                    <i class="fas fa-search pos-abs icon-search"></i>
                 </div>
 
             </div>
@@ -67,24 +73,45 @@
 
             <!-- chat -->
             <div class="bg-white">
-                <div class="dis-flex">
-                    <ul>
-                        <li >
-                            <img class="img-chat" src="img/avatar_1.jpg" alt="">
-                            <div>
-                                <h4>William</h4>
-                                <p>Non ci sono messaggi</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+
+                <ul>
+                    <li class="dis-flex">
+                        <div class="wr-img-chat">
+                            <img class="img-chat" src="img/avatar_1.jpg" alt="avatar">
+                        </div>
+                        <div class="text-chat">
+                            <h4>William</h4>
+                            <p>Non ci sono messaggi</p>
+                        </div>
+                    </li>
+                    <li class="dis-flex">
+                        <div class="wr-img-chat">
+                            <img class="img-chat" src="img/avatar_1.jpg" alt="avatar">
+                        </div>
+                        <div class="text-chat">
+                            <h4>William</h4>
+                            <p>Non ci sono messaggi</p>
+                        </div>
+                    </li>
+                </ul>
+
+
             </div>
         </div>
         <!-- blocco di destra -->
         <div class="col-dx">
-            ff
+            <!-- icone -->
+            <!--
+                <i class="fas fa-search"></i>
+                <i class="fas fa-paperclip"></i> 
+                <i class="fas fa-ellipsis-v"></i>
+
+                <i class="far fa-smile"></i>
+                <i class="fas fa-microphone"></i>
+            -->
         </div>
     </div>
-    
+
 </body>
+
 </html>

@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 body {
@@ -10,7 +10,6 @@ body {
 }
 .wrapper {
     position: relative;
-   
 }
 .bg-green {
     background-color: #009788;
@@ -35,6 +34,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #dadbd5;
+    height: 100vh;
 
 }
 .col-dx {
@@ -44,16 +44,21 @@ body {
     width: 40px;
     border-radius: 50%;
     display: inline-block;
-    margin-left: 5px;
+    /* margin-left: 5px; */
 }
 .wr-profilo {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 5px 0;  
 }
+.wr-profilo div {
+    flex-grow: 1;
+    padding: 0 15px 0 13px;
+
+}
 .icone-wrapper {
     color: gray;
+    text-align: right;
 }
 .padd-10 {
     padding: 10px;
@@ -62,14 +67,15 @@ body {
     padding-right: 10px;
 }
 .wrap-bell {
-    color: #9de0fd;
+    /* color: #9de0fd;
     background-color:#feffff;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-left: 5px;
     text-align: center;
-    margin-right: 10px;
+    margin-right: 10px; */
+    padding: 0 15px 0 13px;
 }
 
 .sec-notification {
@@ -81,11 +87,19 @@ body {
     
 }
 .wrap-bell i {
-    position: relative;
-    transform: translateY(80%);
+    /* position: relative;
+    transform: translateY(80%); */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #9de0fd;
+    background-color:#feffff;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
 
 }
-.notification-par p {
+.notification-parag p {
     font-size: 10px;
 }
 .notification-par p:first-of-type {
@@ -99,38 +113,56 @@ body {
     width: 100%;
     display: inline-block;
     border-radius: 25px;
-    padding: 5px;
+    padding: 8px 0 8px 40px;
     border: none;
+    font-size: 10px;
 }
 .wr-input {
     position: relative;
     background-color: #ededed;
-    padding: 10px 5px;
+    padding: 3px 13px;
 }
 .pos-abs {
     position: absolute;
-    top: 15px;
-    left: 10px;
+    top: 10px;
+    left: 20px;
+  
+}
+.icon-search {
     font-size: 13px;
     color: gray;
-
 }
 
-.wr-input div input {
-    padding-left: 25px;
-}
 .bg-white {
     background-color: #fff;
-
+    flex-grow: 1;
 }
-.img-chat {
-    width: 60px;
-    height: 60px;
+.wr-img-chat {
+    width: 70px;
+    
+    padding: 0 15px 0 13px;
+}
+.wr-img-chat img {
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
 }
 .bg-white ul li {
     list-style: none;
+    padding: 5px;
+    border-bottom: 1px solid gray;
 } 
 .dis-flex {
     display: flex;
+    align-items: center;
+}
+.text-chat {
+    font-size: 14px;
+}
+.text-chat p:nth-last-child(1) {
+    font-size: 10px;
+    color: gray;
+}
+.flex-grow {
+    flex-grow: 1;
 }
