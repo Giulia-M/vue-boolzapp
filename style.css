@@ -13,7 +13,7 @@ body {
 }
 .bg-green {
     background-color: #009788;
-    padding: 50px;
+    height: 150px;
     position: absolute;
     top:0;
     right:0;
@@ -246,6 +246,7 @@ body {
     position: relative;
     font-size: 10px;
     border-radius: 10px;
+    margin-bottom: 8px;
 
 }
 

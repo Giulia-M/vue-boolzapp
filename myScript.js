@@ -87,6 +87,94 @@ const app = new Vue({
 
                 ],
             },
+            {
+                name: "Giulio",
+                avatar: "img/avatar_8.jpg",
+                visible: true,
+                message: [
+                    {
+                        date: "10/01/2020 15:30:55",
+                        text: "Hai portato a spasso il cane?",
+                        status: "sent",
+                    },
+                    {
+                        date: "10/01/2020 15:50:00",
+                        text: "Ricordati di dargli da mangiare",
+                        status: "sent",
+                    },
+                    {
+                        date: "10/01/2020 16:15:22",
+                        text: "Tutto fatto!",
+                        status: "received",
+                    },
+                ],
+            },
+            {
+                name: "Gabriele",
+                avatar: "img/avatar_4.jpg",
+                visible: true,
+                message: [
+                    {
+                        date: "10/01/2020 15:30:55",
+                        text: "Hai portato a spasso il cane?",
+                        status: "sent",
+                    },
+                    {
+                        date: "10/01/2020 15:50:00",
+                        text: "Ricordati di dargli da mangiare",
+                        status: "sent",
+                    },
+                    {
+                        date: "10/01/2020 16:15:22",
+                        text: "Tutto fatto!",
+                        status: "received",
+                    },
+                ],
+            },
+            {
+                name: "Simone",
+                avatar: "img/avatar_5.jpg",
+                visible: true,
+                message: [
+                    {
+                        date: "10/01/2020 15:30:55",
+                        text: "Hai portato a spasso il cane?",
+                        status: "sent",
+                    },
+                    {
+                        date: "10/01/2020 15:50:00",
+                        text: "Ricordati di dargli da mangiare",
+                        status: "sent",
+                    },
+                    {
+                        date: "10/01/2020 16:15:22",
+                        text: "Tutto fatto!",
+                        status: "received",
+                    },
+                ],
+            },
+            {
+                name: "Leonardo",
+                avatar: "img/avatar_7.jpg",
+                visible: true,
+                message: [
+                    {
+                        date: "10/01/2020 15:30:55",
+                        text: "Hai portato a spasso il cane?",
+                        status: "sent",
+                    },
+                    {
+                        date: "10/01/2020 15:50:00",
+                        text: "Ricordati di dargli da mangiare",
+                        status: "sent",
+                    },
+                    {
+                        date: "10/01/2020 16:15:22",
+                        text: "Tutto fatto!",
+                        status: "received",
+                    },
+                ],
+            },
         ],
         activeUser: {},
         userMessage: "",
@@ -103,6 +191,7 @@ const app = new Vue({
             const lastMsgDate = lastMsg[lastMsg.length - 1].date
 
             return this.formatTime(lastMsgDate)
+            
         },
 
         contactListForResearch() {
