@@ -104,8 +104,10 @@ const app = new Vue({
 
             return this.formatTime(lastMsgDate)
         },
+
         contactListForResearch() {
-            this.activeUser.filter()
+           const textFilter = this.searchContact
+           return this.contacts.filter((element) => element.name.includes(textFilter))
         }
 
     },
@@ -125,7 +127,7 @@ const app = new Vue({
 
             }),
             this.userMessage= ""
-            setTimeout(this.receivedMsg, 2000)
+            setTimeout(this.receivedMsg, 1000)
         },
         
         receivedMsg() {

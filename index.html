@@ -31,7 +31,7 @@
     <div class="container-main" id="app">
         <!-- blocco di sinistra  -->
         <div class="col-sx">
-            <!-- profilo  -->
+            <!-- TOOLBAR profilo  -->
             <div>
                 <div class="wr-profilo">
                     <div>
@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <!-- notifiche -->
+            <!-- BAR:notifiche -->
             <div class="sec-notification">
                 <div class="wrap-bell">
 
@@ -62,11 +62,11 @@
                 </div>
             </div>
 
-            <!-- input -->
+            <!-- INPUT DI RICERCA CONTATTI -->
             <div class="wr-input">
 
                 <div>
-                    <input v-model="searchContact" class="input-text" type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input v-model="searchContact"  class="input-text" type="text" placeholder="Cerca o inizia una nuova chat">
                     <i class="fas fa-search pos-abs icon-search"></i>
                 </div>
 
@@ -76,7 +76,8 @@
             <div class="bg-white">
 
                 <ul>
-                    <li v-for=" contact in contacts" @click="toUserClick(contact)" class="dis-flex" :class="{selected: contact.avatar === activeUser.avatar }">
+                    <!--  -->
+                    <li v-for=" contact in contactListForResearch" @click="toUserClick(contact)" class="dis-flex" :class="{selected: contact.avatar === activeUser.avatar }">
                         <div class="wr-img-chat">
                             <img class="img-chat" :src="contact.avatar" alt="avatar">
                         </div>
@@ -85,15 +86,7 @@
                             <p>Non ci sono messaggi</p>
                         </div>
                     </li>
-                    <li class="dis-flex">
-                        <div class="wr-img-chat">
-                            <img class="img-chat" src="img/avatar_1.jpg" alt="avatar">
-                        </div>
-                        <div class="text-chat">
-                            <h4>William</h4>
-                            <p>Non ci sono messaggi</p>
-                        </div>
-                    </li>
+                    
                 </ul>
 
 
@@ -101,12 +94,10 @@
         </div>
 
 
-        <!-- blocco di destra -->
+        <!-- blocco di destra  -->
         <div class="col-dx">
-            <!-- sezione utente -->
+            <!-- NAVBAR DEL CONTATTO CON IL QUALE VOGLIO CHATTARE -->
             <div class="utente-section">
-                
-
                 <div class="wr-img-chat ">
                     <img class="img-chat" :src="activeUser.avatar" alt="">
                 </div>
@@ -117,7 +108,6 @@
                
                 <div class="icone-wrapper">
                     <!-- icone -->
-    
                     <i class="fas fa-search"></i>
                     <i class="fas fa-paperclip padd-10"></i>
                     <i class="fas fa-ellipsis-v"></i>
@@ -125,17 +115,17 @@
                 </div>
             </div>
 
-            <!-- chat section -->
-
+            <!-- PAGINA CHAT -->
             <div class="sec-message-utente">
                 <div class="container-flex" v-for="message in activeUser.message">
+                    <!-- messaggi INVIATI   -->
 
                     <div v-if="message.status=== 'sent'" class="green-mess-me">
                         <p>{{message.text}}</p>
                         <p>{{formatTime(message.date)}}</p>
                         <i class="fas fa-caret-right caret-absolute"></i>
                     </div>
-                    <!-- messaggi utente  -->
+                    <!-- messaggi RICEVUTI   -->
                     <div class="white-message" v-if="message.status === 'received'">
                         <p>{{message.text}}</p>
                         <p>{{formatTime(message.date)}}</p>
@@ -145,7 +135,7 @@
                 </div>
             </div>
 
-            <!-- input -->
+            <!-- input SPAZIO PER SCRIVERE IL MSG DA INVIARE  -->
             <div class="input-section-utente">
                 <div class="icon-smile">
                     <i class="far fa-smile"></i>
