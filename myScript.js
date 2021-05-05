@@ -84,34 +84,60 @@ const app = new Vue({
                         text: "Si, ma preferirei andare al cinema",
                         status: "received",
                     },
+
                 ],
             },
         ],
         activeUser: {},
+        userMessage: "",
+        searchContact: "",
     },
     computed: {
         activeUserLastAccess() {
-            if(!this.activeUser.message) {
+            if (!this.activeUser.message) {
                 return ""
             }
 
-            const lastMsg = this.activeUser.message.filter((msg) => msg.status==="received")
-            
-            const lastMsgDate = lastMsg[lastMsg.length -1 ].date
+            const lastMsg = this.activeUser.message.filter((msg) => msg.status === "received")
+
+            const lastMsgDate = lastMsg[lastMsg.length - 1].date
 
             return this.formatTime(lastMsgDate)
+        },
+        contactListForResearch() {
+            this.activeUser.filter()
         }
+
     },
 
-    
     methods: {
         toUserClick(clickedUser) {
             this.activeUser = clickedUser
         },
         formatTime(date) {
             return moment(date, "DD/MM/YYYY HH:mm:ss").format("HH:mm");
-        }
+        },
+        enterMsg() {
+            this.activeUser.message.push({
+                date: new Date().toLocaleString("it-IT"),
+                text: this.userMessage,
+                status: "sent"
+
+            }),
+            this.userMessage= ""
+            setTimeout(this.receivedMsg, 2000)
+        },
         
+        receivedMsg() {
+            this.activeUser.message.push({
+            
+                date: new Date().toLocaleString("it-IT"),
+                text: "OK!",
+                status: "received"
+    
+            })
+        }
+
 
 
     }

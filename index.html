@@ -66,13 +66,13 @@
             <div class="wr-input">
 
                 <div>
-                    <input class="input-text" type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input v-model="searchContact" class="input-text" type="text" placeholder="Cerca o inizia una nuova chat">
                     <i class="fas fa-search pos-abs icon-search"></i>
                 </div>
 
             </div>
 
-            <!-- sezione (DESTRA) chat: elenco contatti   -->
+            <!-- sezione (sinistra) chat: elenco contatti   -->
             <div class="bg-white">
 
                 <ul>
@@ -151,7 +151,7 @@
                     <i class="far fa-smile"></i>
                 </div>
                 <div>
-                    <input class="input-message" type="text" placeholder="Scrivi un messaggio">
+                    <input @keyup.enter="enterMsg" v-model="userMessage" class="input-message" type="text" placeholder="Scrivi un messaggio">
                 </div>
                 <div class="icon-microphone">
                     <i class="fas fa-microphone"></i>
