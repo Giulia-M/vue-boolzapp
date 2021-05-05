@@ -89,12 +89,28 @@ const app = new Vue({
         ],
         activeUser: {},
     },
-    
+    computed: {
+        activeUserLastAccess() {
+            if(!this.activeUser.message) {
+                return ""
+            }
+
+            const lastMsg = this.activeUser.message.filter((msg) => msg.status==="received")
+            
+            const lastMsgDate = lastMsg[lastMsg.length -1 ].date
+
+            return this.formatTime(lastMsgDate)
+        }
+    },
+
     
     methods: {
-        toUserClick(user) {
-            this.activeUser = user
+        toUserClick(clickedUser) {
+            this.activeUser = clickedUser
         },
+        formatTime(date) {
+            return moment(date, "DD/MM/YYYY HH:mm:ss").format("HH:mm");
+        }
         
 
 

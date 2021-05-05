@@ -209,6 +209,12 @@ body {
     display: flex;
     flex-direction: column;
 }
+.container-flex {
+    display:flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+} 
 .input-section-utente {
     display: flex;
     align-items: center;
@@ -233,7 +239,7 @@ body {
     border: none;
     font-size: 10px;
 }
-.green-mess-me {
+.green-mess-me{
     background-color:#3cb362;
     align-self: flex-end;
     padding: 20px;
@@ -285,4 +291,7 @@ body {
 }
 i {
     cursor: pointer;
+}
+.selected {
+    background-color: grey;
 }

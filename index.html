@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 </head>
 
@@ -75,7 +76,7 @@
             <div class="bg-white">
 
                 <ul>
-                    <li v-for=" contact in contacts" @click="toUserClick(contact)" class="dis-flex">
+                    <li v-for=" contact in contacts" @click="toUserClick(contact)" class="dis-flex" :class="{selected: contact.avatar === activeUser.avatar }">
                         <div class="wr-img-chat">
                             <img class="img-chat" :src="contact.avatar" alt="avatar">
                         </div>
@@ -111,7 +112,7 @@
                 </div>
                 <div> 
                     <p>{{activeUser.name}}</p>
-                    <p>Ultimo accesso alle ore 9.18</p>
+                    <p>Ultimo accesso alle ore {{activeUserLastAccess}}</p>
                 </div>
                
                 <div class="icone-wrapper">
@@ -125,21 +126,22 @@
             </div>
 
             <!-- chat section -->
+
             <div class="sec-message-utente">
-                <div class="green-mess-me">
-                    <p>ciao come stai?</p>
-                    <p>9.30</p>
-                    <i class="fas fa-caret-right caret-absolute"></i>
-                </div>
-                <!-- messaggi utente  -->
-                <div class="white-message" v-for="message in activeUser.message">
-                    <p>{{message.text}}</p>
-                    <p>9.30</p>
-                    <i class="fas fa-caret-left caret-absolute-white"></i>
-                </div>
-                <div class="green-mess-me">
-                    <p>ciao come stai?</p>
-                    <p>9.30</p>
+                <div class="container-flex" v-for="message in activeUser.message">
+
+                    <div v-if="message.status=== 'sent'" class="green-mess-me">
+                        <p>{{message.text}}</p>
+                        <p>{{formatTime(message.date)}}</p>
+                        <i class="fas fa-caret-right caret-absolute"></i>
+                    </div>
+                    <!-- messaggi utente  -->
+                    <div class="white-message" v-if="message.status === 'received'">
+                        <p>{{message.text}}</p>
+                        <p>{{formatTime(message.date)}}</p>
+                        <i class="fas fa-caret-left caret-absolute-white"></i>
+                    </div>
+                    
                 </div>
             </div>
 
