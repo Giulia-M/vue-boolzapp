@@ -25,6 +25,7 @@
 
         <!-- contenitore centrale  -->
         <div class="container-main" id="app">
+
             <!-- blocco di sinistra  -->
             <div class="col-sx">
                 <!-- TOOLBAR profilo  -->
@@ -61,16 +62,16 @@
                 <!-- INPUT DI RICERCA CONTATTI -->
                 <div class="wr-input">
     
-                    <div>
-                        <input v-model="searchContact"  class="input-text" type="text" placeholder="Cerca o inizia una nuova chat" @keyup.esc ="searchContact='' ">
+                    <input v-model="searchContact"  class="input-text" type="text" placeholder="Cerca o inizia una nuova chat" @keyup.esc ="searchContact='' ">
+                    
+                    <i class="fas fa-search pos-abs icon-search"></i>
+
+                    <i @click="searchContact = ' ' " v-if="searchContact" class="fas fa-times deleteIcon"
+                   ></i>
+                    
                         
-                        <i class="fas fa-search pos-abs icon-search"></i>
-    
-                        <a href="#" v-if="searchContact" @click="searchContact = ' ' ">
-                            <i class="fas fa-times"></i>
-                        </a>
-                    </div>
-    
+                    
+                    
                 </div>
     
                 <!-- sezione (sinistra) chat: elenco contatti   -->
@@ -138,15 +139,10 @@
                             <p @click="deleteMessage(index)">Cancella Messaggio</p>
                         </div>
 
-                        <!-- -->
+                        <!-- chevron popup-->
                         <div class="wrapChevron" >
                             <i class="fas fa-chevron-down" @click="showPopup(message)"></i>
                         </div>
-
-                            
-                            
-                        
-                        
                     </div>
                 </div>
     

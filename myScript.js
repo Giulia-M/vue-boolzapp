@@ -39,7 +39,7 @@ const app = new Vue({
                         date: "20/03/2020 16:30:00",
                         text: "Ciao come stai?",
                         status: "sent",
-                        popUp: true
+                        popUp: false
 
                     },
                     {
@@ -224,6 +224,7 @@ const app = new Vue({
         userMessage: "",
         searchContact: "",
         tempFilterData: [],
+        userInput : ""
        
 
     },
@@ -252,7 +253,8 @@ const app = new Vue({
             const newmsg = {
                 date: moment().format("DD/MM/YYYY HH:mm:ss"),
                 text: this.userMessage,
-                status: "sent"
+                status: "sent",
+                popUp: false
             }
             currUser.message.push(newmsg)
             this.userMessage = ""
@@ -269,7 +271,9 @@ const app = new Vue({
             const textReceived = {
                 date: moment().format("DD/MM/YYYY HH:mm:ss"),
                 text: "OK da " + currUser.name,
-                status: "received"
+                status: "received",
+                popUp: false
+
             }
             currUser.message.push(textReceived)
             this.scrollToBottom()
@@ -320,9 +324,9 @@ const app = new Vue({
         showPopup(message) {
             message.popUp = !message.popUp;
         },
-        // deleteMessage(index) {
-        //     this.activeUser.message.splice(index,1)
-        // }
+        deleteMessage(index) {
+            return this.activeUser.message.splice(index,1)
+        }
 
     }
 });

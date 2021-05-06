@@ -30,7 +30,6 @@ body {
     padding-top: 30px;
     padding-bottom: 30px;
     height: 90vh;
-
 }
 .col-sx {
     width: 30%;
@@ -38,14 +37,12 @@ body {
     flex-direction: column;
     background-color: #dadbd5;
     height: 100%;
-
 }
 
 .avatar-img {
     width: 40px;
     border-radius: 50%;
     display: inline-block;
-    /* margin-left: 5px; */
 }
 .wr-profilo {
     display: flex;
@@ -55,7 +52,6 @@ body {
 .wr-profilo div {
     flex-grow: 1;
     padding: 0 15px 0 13px;
-
 }
 .icone-wrapper {
     color: gray;
@@ -69,14 +65,6 @@ body {
     padding-right: 10px;
 }
 .wrap-bell {
-    /* color: #9de0fd;
-    background-color:#feffff;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-left: 5px;
-    text-align: center;
-    margin-right: 10px; */
     padding: 0 15px 0 13px;
 }
 
@@ -86,11 +74,8 @@ body {
     padding-top: 10px;
     background-color:  #9de0fd;
     padding-bottom: 10px;
-    
 }
 .wrap-bell i {
-    /* position: relative;
-    transform: translateY(80%); */
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -99,7 +84,6 @@ body {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-
 }
 .notification-parag p {
     font-size: 10px;
@@ -125,11 +109,15 @@ body {
     background-color: #ededed;
     padding: 3px 13px;
 }
+.deleteIcon{
+    position: absolute;
+    top: 7px;
+    right: 25px;
+}
 .pos-abs {
     position: absolute;
     top: 10px;
-    left: 20px;
-  
+    left: 20px; 
 }
 .icon-search {
     font-size: 13px;
@@ -144,7 +132,6 @@ body {
 
 .wr-img-chat {
     width: 70px;
-    
     padding: 0 15px 0 13px;
 }
 .wr-img-chat img {
@@ -176,7 +163,6 @@ body {
     position: absolute;
     bottom: 0px;
     right: 10px;
-
 }
 
 .flex-grow {
@@ -191,7 +177,6 @@ body {
     flex-direction: column;
     background-color: #dadbd5;
     height: 100%;
-   
 }
 .utente-section {
     display: flex;
@@ -206,7 +191,6 @@ body {
 .utente-section div:nth-of-type(2) {
     display: inline-block;
     flex-grow: 1;
-
 }
 
 .sec-message-utente {
@@ -221,7 +205,7 @@ body {
     display:flex;
     align-items: flex-start;
     flex-direction: column;
-
+    position: relative;
 } 
 .input-section-utente {
     display: flex;
@@ -237,7 +221,6 @@ body {
 }
 .icon-microphone {
     padding: 2px 10px ;
-
 }
 .input-message {
     width: 100%;
@@ -255,22 +238,8 @@ body {
     font-size: 10px;
     border-radius: 10px;
     margin-bottom: 8px;
-
 }
 
-.msgReceived p:last-of-type {
-    position: absolute;
-    bottom: 0px;
-    right: 10px;
-    font-size: 7px;
-
-}
-.msgSent .format-time {
-    position: absolute;
-    bottom: 0px;
-    right: 10px;
-    font-size: 7px;
-}
 .msgSent {
     align-self: flex-start;
     background-color:#fff;
@@ -284,13 +253,12 @@ body {
 .msgReceived::after {
     content: "";
     position: absolute;
-    top: 4px;
+    top: 3px;
     right: -6px;
-    font-size: 10px;
     width: 0;   
     height: 0;
     border-style: solid;
-    border-width: 12px 0 12px 12px;
+    border-width: 2px 0 12px 12px;
     border-color: transparent transparent transparent #3cb462;
 }
 .msgSent::after {
@@ -332,15 +300,17 @@ i {
 .msgSent:hover div.wrapChevron {
     display: block;
 }
+.msgReceived:hover div.wrapChevron {
+    display: block;
+}
 .noneOption {
     display: none;
 }
-
 .optionDeleteMsg {
-    background-color: #fff;
     position: absolute;
-    top: 0;
-    right: 0;
+    background-color: rgb(218 219 213 / 80%);
+    bottom: 0;
+    right: 20px;
     display: block;
-    padding: 5px;
+    padding: 9px 5px;
 }
