@@ -21,149 +21,167 @@
 
     <div class="wrapper">
 
-        <div class="bg-green">
+        <div class="bg-green"></div>
 
-        </div>
-
-    </div>
-
-    <!-- contenitore centrale  -->
-    <div class="container-main" id="app">
-        <!-- blocco di sinistra  -->
-        <div class="col-sx">
-            <!-- TOOLBAR profilo  -->
-            <div>
-                <div class="wr-profilo">
+        <!-- contenitore centrale  -->
+        <div class="container-main" id="app">
+            <!-- blocco di sinistra  -->
+            <div class="col-sx">
+                <!-- TOOLBAR profilo  -->
+                <div>
+                    <div class="wr-profilo">
+                        <div>
+    
+                            <img class="avatar-img" src="img/avatar_io.jpg" alt="avatar">
+                        </div>
+                        <div class="icone-wrapper">
+                            <i class="fas fa-circle-notch"></i>
+    
+                            <i class="fas fa-comment-alt padd-10"></i>
+    
+                            <i class="fas fa-ellipsis-v padd-r-10"></i>
+    
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- BAR:notifiche -->
+                <div class="sec-notification">
+                    <div class="wrap-bell">
+    
+                        <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <div class="notification-parag">
+    
+                        <p>Ricevi notifiche di nuovi messaggi</p>
+                        <p class="underline">Attiva notifiche desktop</p>
+                    </div>
+                </div>
+    
+                <!-- INPUT DI RICERCA CONTATTI -->
+                <div class="wr-input">
+    
                     <div>
-
-                        <img class="avatar-img" src="img/avatar_io.jpg" alt="avatar">
+                        <input v-model="searchContact"  class="input-text" type="text" placeholder="Cerca o inizia una nuova chat" @keyup.esc ="searchContact='' ">
+                        
+                        <i class="fas fa-search pos-abs icon-search"></i>
+    
+                        <a href="#" v-if="searchContact" @click="searchContact = ' ' ">
+                            <i class="fas fa-times"></i>
+                        </a>
                     </div>
+    
+                </div>
+    
+                <!-- sezione (sinistra) chat: elenco contatti   -->
+                <div class="bg-white">
+    
+                    <ul>
+                        <!--  -->
+                        <li v-for=" (contact, index) in filteredUsersList" @click="toUserClick(contact)" class="dis-flex" :class="{selected: contact.avatar === activeUser.avatar }">
+                            <div class="wr-img-chat">
+                                <img class="img-chat" :src="contact.avatar" alt="avatar">
+                            </div>
+                            <div class="text-chat">
+                                <h4>{{contact.name}}</h4>
+                                <p> 
+                                    {{msgLastAccess(contact)}}
+                                </p>
+    
+                                <p>
+                                    {{activeUserLastAccess(contact)}}
+                                </p>
+                            </div>
+                        </li>
+                        
+                    </ul>
+    
+    
+                </div>
+            </div>
+    
+    
+            <!-- blocco di destra  -->
+            <div class="col-dx">
+                <!-- NAVBAR DEL CONTATTO CON IL QUALE VOGLIO CHATTARE -->
+                <div class="utente-section">
+                    <div class="wr-img-chat ">
+                        <img class="img-chat" :src="activeUser.avatar" alt="">
+                    </div>
+                    <div> 
+                        <p>{{activeUser.name}}</p>
+                        <p v-if="activeUserLastAccess">Ultimo accesso alle ore {{activeUserLastAccess(activeUser)}}</p>
+                    </div>
+                   
                     <div class="icone-wrapper">
-                        <i class="fas fa-circle-notch"></i>
-
-                        <i class="fas fa-comment-alt padd-10"></i>
-
-                        <i class="fas fa-ellipsis-v padd-r-10"></i>
-
+                        <!-- icone -->
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-paperclip padd-10"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+    
                     </div>
                 </div>
-            </div>
+    
+                <!-- PAGINA CHAT -->
+                <!-- ref tipo id per richiam cn vue -->
+                <div class="sec-message-utente" ref="chatContainerScroll" >
+                    <!-- ref="chatContainerScroll" -->
 
-            <!-- BAR:notifiche -->
-            <div class="sec-notification">
-                <div class="wrap-bell">
+                    <div class="container-flex" v-for="(message, index) in activeUser.message" :key="index">
 
-                    <i class="fas fa-bell-slash"></i>
-                </div>
-                <div class="notification-parag">
-
-                    <p>Ricevi notifiche di nuovi messaggi</p>
-                    <p class="underline">Attiva notifiche desktop</p>
-                </div>
-            </div>
-
-            <!-- INPUT DI RICERCA CONTATTI -->
-            <div class="wr-input">
-
-                <div>
-                    <input v-model="searchContact"  class="input-text" type="text" placeholder="Cerca o inizia una nuova chat" @keyup.esc ="searchContact='' ">
-                    
-                    <i class="fas fa-search pos-abs icon-search"></i>
-
-                    <a href="#" v-if="searchContact" @click="searchContact = ' ' ">
-                        <i class="fas fa-times"></i>
-                    </a>
-                </div>
-
-            </div>
-
-            <!-- sezione (sinistra) chat: elenco contatti   -->
-            <div class="bg-white">
-
-                <ul>
-                    <!--  -->
-                    <li v-for=" (contact, index) in filteredUsersList" @click="toUserClick(contact)" class="dis-flex" :class="{selected: contact.avatar === activeUser.avatar }">
-                        <div class="wr-img-chat">
-                            <img class="img-chat" :src="contact.avatar" alt="avatar">
+                        <!-- messaggi INVIATI   -->
+                        <div v-if="message.status=== 'sent'" class="green-mess-me">
+                            <p>{{message.text}}</p>
+                            <p>{{formatTime(message.date)}}</p>
+                            <i class="fas fa-caret-right caret-absolute"></i>
+                            
+                            <!-- messagio opzionale da cancellare  -->
+                            
                         </div>
-                        <div class="text-chat">
-                            <h4>{{contact.name}}</h4>
-                            <p> 
-                                {{msgLastAccess(contact)}}
-                                {{activeUserLastAccess(contact)}}
-                            </p>
+    
+                        <!-- messaggi RICEVUTI-->
+                        <div  class="white-message" v-if="message.status === 'received'">
+                            <p>{{message.text}}</p>
+                            <p class="format-time">{{formatTime(message.date)}}</p>
+                            <i class="fas fa-caret-left caret-absolute-white"></i>
+
+                            <div v-if="message.popUp" :class="{message.popU p=== 'true' ? 'optionDeleteMsg' : 'noneOption'}">
+                                <p>delete message</p>
+                            </div>
+    
+                            <!-- messagio opzionale da cancellare -->
+                            <div class="wrapChevron">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+
+                            
+                            
                         </div>
-                    </li>
+                        
+                    </div>
+                </div>
+    
+                <!-- input SPAZIO PER SCRIVERE IL MSG DA INVIARE  -->
+                <div class="input-section-utente">
+                    <div class="icon-smile">
+                        <i class="far fa-smile"></i>
+                    </div>
+                    <div>
+                        <input @keyup.enter="enterMsg" 
+                        
+                        v-model="userMessage" class="input-message" type="text" placeholder="Scrivi un messaggio"
+                        >
+                    </div>
+                    <div class="icon-microphone">
+                        <i class="fas fa-microphone"></i>
+                    </div>
                     
-                </ul>
-
-
+                </div>
             </div>
         </div>
-
-
-        <!-- blocco di destra  -->
-        <div class="col-dx">
-            <!-- NAVBAR DEL CONTATTO CON IL QUALE VOGLIO CHATTARE -->
-            <div class="utente-section">
-                <div class="wr-img-chat ">
-                    <img class="img-chat" :src="activeUser.avatar" alt="">
-                </div>
-                <div> 
-                    <p>{{activeUser.name}}</p>
-                    <p v-if="activeUserLastAccess">Ultimo accesso alle ore {{activeUserLastAccess(activeUser)}}</p>
-                </div>
-               
-                <div class="icone-wrapper">
-                    <!-- icone -->
-                    <i class="fas fa-search"></i>
-                    <i class="fas fa-paperclip padd-10"></i>
-                    <i class="fas fa-ellipsis-v"></i>
-
-                </div>
-            </div>
-
-            <!-- PAGINA CHAT -->
-            <!-- ref tipo id per richiam cn vue -->
-            <div class="sec-message-utente" ref="chatContainerScroll" >
-                <!-- ref="chatContainerScroll" -->
-                <div class="container-flex" v-for="message in activeUser.message">
-                    <!-- messaggi INVIATI   -->
-
-                    <div v-if="message.status=== 'sent'" class="green-mess-me">
-                        <p>{{message.text}}</p>
-                        <p>{{formatTime(message.date)}}</p>
-                        <i class="fas fa-caret-right caret-absolute"></i>
-                    </div>
-                    <!-- messaggi RICEVUTI   -->
-                    <div class="white-message" v-if="message.status === 'received'">
-                        <p>{{message.text}}</p>
-                        <p>{{formatTime(message.date)}}</p>
-                        <i class="fas fa-caret-left caret-absolute-white"></i>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <!-- input SPAZIO PER SCRIVERE IL MSG DA INVIARE  -->
-            <div class="input-section-utente">
-                <div class="icon-smile">
-                    <i class="far fa-smile"></i>
-                </div>
-                <div>
-                    <input @keyup.enter="enterMsg" 
-                    
-                    v-model="userMessage" class="input-message" type="text" placeholder="Scrivi un messaggio"
-                    >
-                </div>
-                <div class="icon-microphone">
-                    <i class="fas fa-microphone"></i>
-                </div>
-                
-            </div>
-        </div>
+        <script src="myScript.js"></script>
     </div>
-    <script src="myScript.js"></script>
+
 </body>
 
 </html>

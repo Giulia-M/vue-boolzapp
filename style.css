@@ -10,6 +10,7 @@ body {
 }
 .wrapper {
     position: relative;
+    height: 100vh;
 }
 .bg-green {
     background-color: #009788;
@@ -140,6 +141,7 @@ body {
     flex-grow: 1;
     overflow: auto;
 }
+
 .wr-img-chat {
     width: 70px;
     
@@ -153,14 +155,13 @@ body {
 .bg-white ul li {
     list-style: none;
     padding: 5px;
+    position: relative;
     border-bottom: 1px solid gray;
 } 
 .dis-flex {
     display: flex;
     align-items: center;
     cursor: pointer;
-
-
 }
 .dis-flex:hover {
     background-color: grey;
@@ -172,7 +173,12 @@ body {
 .text-chat p:nth-last-child(1) {
     font-size: 10px;
     color: lightgray;
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+
 }
+
 .flex-grow {
     flex-grow: 1;
     overflow: auto;
@@ -257,11 +263,9 @@ body {
     bottom: 0px;
     right: 10px;
     font-size: 7px;
-   
-
 
 }
-.white-message p:last-of-type {
+.white-message .format-time {
     position: absolute;
     bottom: 0px;
     right: 10px;
@@ -297,4 +301,35 @@ i {
 }
 .selected {
     background-color: grey;
+}
+.btn-optional {
+    position: absolute;
+    top: 10px;
+    right:5px;
+}
+.item-wrapp {
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.wrapChevron {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    display: none;
+}
+.white-message:hover div.wrapChevron {
+    display: block;
+}
+.noneOption {
+    display: none;
+}
+
+.optionDeleteMsg {
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
 }

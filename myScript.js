@@ -12,16 +12,18 @@ const app = new Vue({
                         date: "10/01/2020 15:30:55",
                         text: "Hai portato a spasso il cane?",
                         status: "sent",
+                      
                     },
                     {
                         date: "10/01/2020 15:50:00",
-                        text: "",
+                        text: "hai fatto la spesa?",
                         status: "sent",
                     },
                     {
                         date: "10/01/2020 16:15:22",
                         text: "Tutto fatto!",
                         status: "received",
+                        popUp: false,
                     },
                 ],
             },
@@ -180,16 +182,11 @@ const app = new Vue({
         userMessage: "",
         searchContact: "",
         tempFilterData: [],
-        popUpMsg: {},
+       
 
     },
     computed: {
         
-
-
-
-
-
         //-------MI PERMETTE DI ATTIVARE L'INPUT SEARCH
         filteredUsersList() {
             return this.contacts.filter((element) => {
@@ -249,9 +246,11 @@ const app = new Vue({
         msgLastAccess(contact) {
             if (!contact.message) {
                 return ""
+                
             }
 
             const showLastMsg = contact.message.filter((msg) => msg.status === "received" || msg.status === "sent")
+
             if (!showLastMsg.length) {
                 return "nessun messaggio disponibile"
             }
@@ -264,7 +263,7 @@ const app = new Vue({
                 return ""
             }
 
-            const lastMsg = contact.message.filter((msg) => msg.status === "received")
+            const lastMsg = contact.message.filter((msg) => msg.status === "received" || msg.status === "sent")
 
             //CONTROLLO DEBUGGER
             if (lastMsg.length === 0) {
@@ -273,14 +272,10 @@ const app = new Vue({
 
             const lastMsgDate = lastMsg[lastMsg.length - 1].date
 
-            //CONTROLLO DEBUGGER
-            if (!lastMsgDate) {
-                return ""
-            }
-
             return this.formatTime(lastMsgDate)
 
         },
+        
 
     }
 });
