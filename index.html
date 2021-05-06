@@ -66,8 +66,13 @@
             <div class="wr-input">
 
                 <div>
-                    <input v-model="searchContact"  class="input-text" type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input v-model="searchContact"  class="input-text" type="text" placeholder="Cerca o inizia una nuova chat" @keyup.esc ="searchContact='' ">
+                    
                     <i class="fas fa-search pos-abs icon-search"></i>
+
+                    <a href="#" v-if="searchContact" @click="searchContact = ' ' ">
+                        <i class="fas fa-times"></i>
+                    </a>
                 </div>
 
             </div>
@@ -77,13 +82,16 @@
 
                 <ul>
                     <!--  -->
-                    <li v-for=" contact in contactListForResearch" @click="toUserClick(contact)" class="dis-flex" :class="{selected: contact.avatar === activeUser.avatar }">
+                    <li v-for=" contact in filteredUsersList" @click="toUserClick(contact)" class="dis-flex" :class="{selected: contact.avatar === activeUser.avatar }">
                         <div class="wr-img-chat">
                             <img class="img-chat" :src="contact.avatar" alt="avatar">
                         </div>
                         <div class="text-chat">
                             <h4>{{contact.name}}</h4>
-                            <p>Non ci sono messaggi</p>
+                            <p> 
+                                {{msgLastAccess}}
+                                {{activeUserLastAccess}}
+                            </p>
                         </div>
                     </li>
                     
@@ -103,7 +111,7 @@
                 </div>
                 <div> 
                     <p>{{activeUser.name}}</p>
-                    <p>Ultimo accesso alle ore {{activeUserLastAccess}}</p>
+                    <p v-if="activeUserLastAccess">Ultimo accesso alle ore {{activeUserLastAccess}}</p>
                 </div>
                
                 <div class="icone-wrapper">
@@ -116,7 +124,9 @@
             </div>
 
             <!-- PAGINA CHAT -->
-            <div class="sec-message-utente">
+            <!-- ref tipo id per richiam cn vue -->
+            <div class="sec-message-utente" ref="chatContainerScroll" >
+                <!-- ref="chatContainerScroll" -->
                 <div class="container-flex" v-for="message in activeUser.message">
                     <!-- messaggi INVIATI   -->
 
@@ -141,7 +151,10 @@
                     <i class="far fa-smile"></i>
                 </div>
                 <div>
-                    <input @keyup.enter="enterMsg" v-model="userMessage" class="input-message" type="text" placeholder="Scrivi un messaggio">
+                    <input @keyup.enter="enterMsg" 
+                    
+                    v-model="userMessage" class="input-message" type="text" placeholder="Scrivi un messaggio"
+                    >
                 </div>
                 <div class="icon-microphone">
                     <i class="fas fa-microphone"></i>

@@ -28,13 +28,15 @@ body {
     display: flex;
     padding-top: 30px;
     padding-bottom: 30px;
+    height: 90vh;
+
 }
 .col-sx {
     width: 30%;
     display: flex;
     flex-direction: column;
     background-color: #dadbd5;
-    height: 100vh;
+    height: 100%;
 
 }
 
@@ -182,7 +184,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #dadbd5;
-    height: 100vh;
+    height: 100%;
    
 }
 .utente-section {

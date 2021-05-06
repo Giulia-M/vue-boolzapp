@@ -179,6 +179,7 @@ const app = new Vue({
         activeUser: {},
         userMessage: "",
         searchContact: "",
+        tempFilterData: [],
     },
     computed: {
         activeUserLastAccess() {
@@ -188,15 +189,41 @@ const app = new Vue({
 
             const lastMsg = this.activeUser.message.filter((msg) => msg.status === "received")
 
+            //CONTROLLO DEBUGGER
+            if (lastMsg.length === 0) {
+                return "";
+            }
+
             const lastMsgDate = lastMsg[lastMsg.length - 1].date
 
+            //CONTROLLO DEBUGGER
+            if(!lastMsgDate) {
+                return ""
+            }
+
             return this.formatTime(lastMsgDate)
-            
+
         },
 
-        contactListForResearch() {
-           const textFilter = this.searchContact
-           return this.contacts.filter((element) => element.name.includes(textFilter))
+        msgLastAccess() {
+            if (!this.activeUser.message) {
+                return ""
+            }
+
+            const showLastMsg = this.activeUser.message.filter((msg) => msg.status === "received" || msg.status === "sent")
+
+            const lastTextDisplayed = showLastMsg[showLastMsg.length - 1].text
+            return lastTextDisplayed
+        },
+
+
+
+        //-------MI PERMETTE DI ATTIVARE L'INPUT SEARCH
+        filteredUsersList() {
+            return this.contacts.filter((element) => {
+                // return element.name.toLowerCase().includes(this.searchContact.toLowerCase())
+                return element.name.toLowerCase().startsWith((this.searchContact.toLowerCase()))
+            })
         }
 
     },
@@ -209,27 +236,39 @@ const app = new Vue({
             return moment(date, "DD/MM/YYYY HH:mm:ss").format("HH:mm");
         },
         enterMsg() {
-            this.activeUser.message.push({
-                date: new Date().toLocaleString("it-IT"),
+            const currUser= this.activeUser
+            
+            const newmsg = {
+                date: moment().format("DD/MM/YYYY HH:mm:ss"),
                 text: this.userMessage,
                 status: "sent"
-
-            }),
-            this.userMessage= ""
-            setTimeout(this.receivedMsg, 1000)
+            }
+            currUser.message.push(newmsg)
+            this.userMessage = ""
+            // this.scrollToBottom(),
+            setTimeout(this.receivedMsg, 5000)
         },
-        
-        receivedMsg() {
-            this.activeUser.message.push({
-            
-                date: new Date().toLocaleString("it-IT"),
-                text: "OK!",
+
+        receivedMsg(currUser) {
+            currUser = this.activeUser
+            const textReceived = {
+                date: moment().format("DD/MM/YYYY HH:mm:ss"),
+                text: "OK da " + this.activeUser.name,
                 status: "received"
-    
+            }
+            currUser.message.push(textReceived)
+
+        },
+
+        //---------------------------//
+        //????nn ho capito cosa fa questa funzione???
+        scrollToBottom() {
+            this.$nextTick(() => {
+                const htm1Element = this.$refs.chatContainerScroll
+                htm1Element.scrollTop = htm1Element.scrollHeight
             })
+            //mi permette di recuperare tutta la lista di tutti i ref 
         }
-
-
 
     }
 });
