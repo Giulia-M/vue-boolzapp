@@ -154,12 +154,13 @@
                     <div>
                         <input @keyup.enter="enterMsg" 
                         
-                        v-model="userMessage" class="input-message" type="text" placeholder="Scrivi un messaggio"
-                        >
+                        v-model="userMessage" class="input-message" type="text" placeholder="Scrivi un messaggio">
+
+                        
+                        
                     </div>
-                    <div class="icon-microphone">
-                        <i class="fas fa-microphone"></i>
-                    </div>
+                    <i class="fas fa-paper-plane icon-paper" v-if="userMessage" @click="enterMsg" ></i>
+                    <i class="fas fa-microphone icon-microphone" v-else="userMessage:'' "></i>
                     
                 </div>
             </div>

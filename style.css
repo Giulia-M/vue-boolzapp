@@ -222,6 +222,9 @@ body {
 .icon-microphone {
     padding: 2px 10px ;
 }
+.icon-paper {
+    padding: 2px 10px;
+}
 .input-message {
     width: 100%;
     display: inline-block;
@@ -230,7 +233,7 @@ body {
     border: none;
     font-size: 10px;
 }
-.msgReceived{
+.msgSent{
     background-color:#3cb362;
     align-self: flex-end;
     padding: 20px;
@@ -240,7 +243,7 @@ body {
     margin-bottom: 8px;
 }
 
-.msgSent {
+.msgReceived {
     align-self: flex-start;
     background-color:#fff;
     padding: 20px;
@@ -250,7 +253,7 @@ body {
     margin-bottom: 5px;
 }
 
-.msgReceived::after {
+.msgSent::after {
     content: "";
     position: absolute;
     top: 3px;
@@ -261,7 +264,7 @@ body {
     border-width: 2px 0 12px 12px;
     border-color: transparent transparent transparent #3cb462;
 }
-.msgSent::after {
+.msgReceived::after {
     position: absolute;
     font-size: 10px;
     content: "";
@@ -313,4 +316,10 @@ i {
     right: 20px;
     display: block;
     padding: 9px 5px;
+}
+.text-chat p {
+    font-size: 10px;
+} 
+input:focus {
+    outline: none;
 }

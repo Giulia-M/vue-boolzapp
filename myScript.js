@@ -224,9 +224,6 @@ const app = new Vue({
         userMessage: "",
         searchContact: "",
         tempFilterData: [],
-        userInput : ""
-       
-
     },
     computed: {
         
@@ -327,7 +324,8 @@ const app = new Vue({
         deleteMessage(index) {
             return this.activeUser.message.splice(index,1)
         }
-
+        
+        
     }
 });
 
