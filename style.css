@@ -247,7 +247,7 @@ body {
     border: none;
     font-size: 10px;
 }
-.green-mess-me{
+.msgReceived{
     background-color:#3cb362;
     align-self: flex-end;
     padding: 20px;
@@ -258,20 +258,20 @@ body {
 
 }
 
-.green-mess-me p:last-of-type {
+.msgReceived p:last-of-type {
     position: absolute;
     bottom: 0px;
     right: 10px;
     font-size: 7px;
 
 }
-.white-message .format-time {
+.msgSent .format-time {
     position: absolute;
     bottom: 0px;
     right: 10px;
     font-size: 7px;
 }
-.white-message {
+.msgSent {
     align-self: flex-start;
     background-color:#fff;
     padding: 20px;
@@ -280,21 +280,30 @@ body {
     border-radius: 10px;
     margin-bottom: 5px;
 }
-.caret-absolute {
+
+.msgReceived::after {
+    content: "";
     position: absolute;
     top: 4px;
     right: -6px;
-   
-    font-size: 20px;
-    color: #3cb362;
+    font-size: 10px;
+    width: 0;   
+    height: 0;
+    border-style: solid;
+    border-width: 12px 0 12px 12px;
+    border-color: transparent transparent transparent #3cb462;
 }
-.caret-absolute-white {
+.msgSent::after {
     position: absolute;
-    top: 4px;
-    left: -6px;
-   
-    font-size: 20px;
-    color: #fff;
+    font-size: 10px;
+    content: "";
+    top: 0px;
+    left: -7px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 17.3px 10px 0 10px;
+    border-color: #fafafa transparent transparent transparent;
 }
 i {
     cursor: pointer;
@@ -320,7 +329,7 @@ i {
     padding: 10px;
     display: none;
 }
-.white-message:hover div.wrapChevron {
+.msgSent:hover div.wrapChevron {
     display: block;
 }
 .noneOption {
@@ -332,4 +341,6 @@ i {
     position: absolute;
     top: 0;
     right: 0;
+    display: block;
+    padding: 5px;
 }
