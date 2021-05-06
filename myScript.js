@@ -15,7 +15,7 @@ const app = new Vue({
                     },
                     {
                         date: "10/01/2020 15:50:00",
-                        text: "Ricordati di dargli da mangiare",
+                        text: "",
                         status: "sent",
                     },
                     {
@@ -180,41 +180,13 @@ const app = new Vue({
         userMessage: "",
         searchContact: "",
         tempFilterData: [],
+        popUpMsg: {},
+
     },
     computed: {
-        activeUserLastAccess() {
-            if (!this.activeUser.message) {
-                return ""
-            }
+        
 
-            const lastMsg = this.activeUser.message.filter((msg) => msg.status === "received")
 
-            //CONTROLLO DEBUGGER
-            if (lastMsg.length === 0) {
-                return "";
-            }
-
-            const lastMsgDate = lastMsg[lastMsg.length - 1].date
-
-            //CONTROLLO DEBUGGER
-            if(!lastMsgDate) {
-                return ""
-            }
-
-            return this.formatTime(lastMsgDate)
-
-        },
-
-        msgLastAccess() {
-            if (!this.activeUser.message) {
-                return ""
-            }
-
-            const showLastMsg = this.activeUser.message.filter((msg) => msg.status === "received" || msg.status === "sent")
-
-            const lastTextDisplayed = showLastMsg[showLastMsg.length - 1].text
-            return lastTextDisplayed
-        },
 
 
 
@@ -236,8 +208,8 @@ const app = new Vue({
             return moment(date, "DD/MM/YYYY HH:mm:ss").format("HH:mm");
         },
         enterMsg() {
-            const currUser= this.activeUser
-            
+            const currUser = this.activeUser
+
             const newmsg = {
                 date: moment().format("DD/MM/YYYY HH:mm:ss"),
                 text: this.userMessage,
@@ -245,30 +217,70 @@ const app = new Vue({
             }
             currUser.message.push(newmsg)
             this.userMessage = ""
-            // this.scrollToBottom(),
-            setTimeout(this.receivedMsg, 5000)
+
+            this.scrollToBottom(),
+
+                setTimeout(() => {
+                this.receivedMsg(currUser)
+            }, 5000)
         },
 
         receivedMsg(currUser) {
-            currUser = this.activeUser
+
             const textReceived = {
                 date: moment().format("DD/MM/YYYY HH:mm:ss"),
-                text: "OK da " + this.activeUser.name,
+                text: "OK da " + currUser.name,
                 status: "received"
             }
             currUser.message.push(textReceived)
+            this.scrollToBottom()
 
         },
 
         //---------------------------//
-        //????nn ho capito cosa fa questa funzione???
+        //i messaggi che riceverò mi compariranno in modo scollante 
         scrollToBottom() {
             this.$nextTick(() => {
                 const htm1Element = this.$refs.chatContainerScroll
                 htm1Element.scrollTop = htm1Element.scrollHeight
             })
             //mi permette di recuperare tutta la lista di tutti i ref 
-        }
+        },
+        msgLastAccess(contact) {
+            if (!contact.message) {
+                return ""
+            }
+
+            const showLastMsg = contact.message.filter((msg) => msg.status === "received" || msg.status === "sent")
+            if (!showLastMsg.length) {
+                return "nessun messaggio disponibile"
+            }
+            const lastTextDisplayed = showLastMsg[showLastMsg.length - 1].text
+
+            return lastTextDisplayed
+        },
+        activeUserLastAccess(contact) {
+            if (!contact.message) {
+                return ""
+            }
+
+            const lastMsg = contact.message.filter((msg) => msg.status === "received")
+
+            //CONTROLLO DEBUGGER
+            if (lastMsg.length === 0) {
+                return "";
+            }
+
+            const lastMsgDate = lastMsg[lastMsg.length - 1].date
+
+            //CONTROLLO DEBUGGER
+            if (!lastMsgDate) {
+                return ""
+            }
+
+            return this.formatTime(lastMsgDate)
+
+        },
 
     }
 });

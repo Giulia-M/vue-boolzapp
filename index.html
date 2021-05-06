@@ -82,15 +82,15 @@
 
                 <ul>
                     <!--  -->
-                    <li v-for=" contact in filteredUsersList" @click="toUserClick(contact)" class="dis-flex" :class="{selected: contact.avatar === activeUser.avatar }">
+                    <li v-for=" (contact, index) in filteredUsersList" @click="toUserClick(contact)" class="dis-flex" :class="{selected: contact.avatar === activeUser.avatar }">
                         <div class="wr-img-chat">
                             <img class="img-chat" :src="contact.avatar" alt="avatar">
                         </div>
                         <div class="text-chat">
                             <h4>{{contact.name}}</h4>
                             <p> 
-                                {{msgLastAccess}}
-                                {{activeUserLastAccess}}
+                                {{msgLastAccess(contact)}}
+                                {{activeUserLastAccess(contact)}}
                             </p>
                         </div>
                     </li>
@@ -111,7 +111,7 @@
                 </div>
                 <div> 
                     <p>{{activeUser.name}}</p>
-                    <p v-if="activeUserLastAccess">Ultimo accesso alle ore {{activeUserLastAccess}}</p>
+                    <p v-if="activeUserLastAccess">Ultimo accesso alle ore {{activeUserLastAccess(activeUser)}}</p>
                 </div>
                
                 <div class="icone-wrapper">
