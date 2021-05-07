@@ -309,7 +309,7 @@ i {
 .noneOption {
     display: none;
 }
-.optionDeleteMsg {
+.msgSent .optionDeleteMsg {
     position: absolute;
     background-color: rgb(218 219 213 / 80%);
     bottom: 0;
@@ -325,8 +325,16 @@ input:focus {
 }
 ul.popupStandard li {
     list-style: none;
-    width: 100px;
+    width: 150px;
     cursor: pointer;
     padding: 5px;
 
+}
+.msgReceived .optionDeleteMsg {
+    position: absolute;
+    background-color: rgb(218 219 213 / 80%);
+    bottom: 0;
+    left: 50px;
+    display: block;
+    padding: 9px 5px;
 }

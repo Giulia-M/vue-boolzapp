@@ -320,7 +320,6 @@ const app = new Vue({
             this.$set(message, "popUp", true)
 
             
-            console.log("ciao")
             event.currentTarget.focus()
 
         },
