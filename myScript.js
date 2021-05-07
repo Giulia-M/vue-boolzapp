@@ -313,15 +313,15 @@ const app = new Vue({
         },
         
         deleteMessage(index) {
-            this.activeUser.message.splice(index,1)
+            return this.activeUser.message.splice(index,1)
         },
 
         onMsgClick(message, event) {
             this.$set(message, "popUp", true)
 
-            // event.stopPropagation()
-
-            // event.currentTarget.focus()
+            
+            console.log("ciao")
+            event.currentTarget.focus()
 
         },
         onFocusLost(message) {

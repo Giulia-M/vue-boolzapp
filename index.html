@@ -113,16 +113,16 @@
                     <!-- ref="chatContainerScroll" -->
 
                     <div class="container-flex" v-for="(message, index) in activeUser.message" :key="index" :class ="{msgReceived: message.status === 'received', msgSent : message.status === 'sent' }" @blur="onFocusLost(message)" tabindex="-1" 
-                    @click="onMsgClick(message, $event)">
+                    >
 
                         <!-- messaggi -->
                         <p>{{message.text}}</p>
                         <p>{{formatTime(message.date)}}</p>
                         
                         <!-- POPUP -->
-                        <div :class="message.popUp === true ? 'optionDeleteMsg' : 'noneOption'"  @click.stop="onPopUpClick(message)">
+                        <div :class="message.popUp === true ? 'optionDeleteMsg' : 'noneOption'"  @click="onPopUpClick(message)">
                             <ul class="popupStandard">
-                                <li @click="deleteMessage(index)">
+                                <li @click.stop="deleteMessage(index)">
                                     Cancella Messaggio
                                 </li>
                                 <li>
@@ -134,7 +134,7 @@
 
                         <!-- chevron popup-->
                         <div class="wrapChevron" >
-                            <i class="fas fa-chevron-down" @click="onMsgClick(message)"></i>
+                            <i class="fas fa-chevron-down" @click.stop="onMsgClick(message, $event)"></i>
                         </div>
                     </div>
                 </div>
