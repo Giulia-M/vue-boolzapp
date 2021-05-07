@@ -313,7 +313,7 @@ i {
     position: absolute;
     background-color: rgb(218 219 213 / 80%);
     bottom: 0;
-    right: 20px;
+    right: -10px;
     display: block;
     padding: 9px 5px;
 }
@@ -322,4 +322,11 @@ i {
 } 
 input:focus {
     outline: none;
+}
+ul.popupStandard li {
+    list-style: none;
+    width: 100px;
+    cursor: pointer;
+    padding: 5px;
+
 }

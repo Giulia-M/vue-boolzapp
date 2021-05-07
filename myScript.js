@@ -12,20 +12,20 @@ const app = new Vue({
                         date: "10/01/2020 15:30:55",
                         text: "Hai portato a spasso il cane?",
                         status: "sent",
-                        popUp: false
+                       
                     },
                     {
                         date: "10/01/2020 15:50:00",
                         text: "hai fatto la spesa?",
                         status: "sent",
-                        popUp: false
+                        
 
                     },
                     {
                         date: "10/01/2020 16:15:22",
                         text: "Tutto fatto!",
                         status: "received",
-                        popUp: false
+                        
 
                     },
                 ],
@@ -39,20 +39,20 @@ const app = new Vue({
                         date: "20/03/2020 16:30:00",
                         text: "Ciao come stai?",
                         status: "sent",
-                        popUp: false
+                        
 
                     },
                     {
                         date: "20/03/2020 16:30:55",
                         text: "Bene grazie! Stasera ci vediamo?",
                         status: "received",
-                        popUp: false
+                        
                     },
                     {
                         date: "20/03/2020 16:35:00",
                         text: "Mi piacerebbe ma devo andare a fare la spesa.",
                         status: "sent",
-                        popUp: false
+                       
 
                     },
                 ],
@@ -66,21 +66,21 @@ const app = new Vue({
                         date: "28/03/2020 10:10:40",
                         text: "La Marianna va in campagna",
                         status: "received",
-                        popUp: false
+                       
 
                     },
                     {
                         date: "28/03/2020 10:20:10",
                         text: "Sicuro di non aver sbagliato chat?",
                         status: "sent",
-                        popUp: false
+                     
 
                     },
                     {
                         date: "28/03/2020 16:15:22",
                         text: "Ah scusa!",
                         status: "received",
-                        popUp: false
+                     
 
                     },
                 ],
@@ -94,14 +94,14 @@ const app = new Vue({
                         date: "10/01/2020 15:30:55",
                         text: "Lo sai che ha aperto una nuova pizzeria?",
                         status: "sent",
-                        popUp: false
+                     
 
                     },
                     {
                         date: "10/01/2020 15:50:00",
                         text: "Si, ma preferirei andare al cinema",
                         status: "received",
-                        popUp: false
+                      
 
                     },
 
@@ -116,22 +116,21 @@ const app = new Vue({
                         date: "10/01/2020 15:30:55",
                         text: "Hai portato a spasso il cane?",
                         status: "sent",
-                        popUp: false
+                        
 
                     },
                     {
                         date: "10/01/2020 15:50:00",
                         text: "Ricordati di dargli da mangiare",
                         status: "sent",
-                        popUp: false
+                      
 
                     },
                     {
                         date: "10/01/2020 16:15:22",
                         text: "Tutto fatto!",
                         status: "received",
-                        popUp: false
-
+                    
                     },
                 ],
             },
@@ -144,21 +143,20 @@ const app = new Vue({
                         date: "10/01/2020 15:30:55",
                         text: "Hai portato a spasso il cane?",
                         status: "sent",
-                        popUp: false
+                     
 
                     },
                     {
                         date: "10/01/2020 15:50:00",
                         text: "Ricordati di dargli da mangiare",
                         status: "sent",
-                        popUp: false
+                  
 
                     },
                     {
                         date: "10/01/2020 16:15:22",
                         text: "Tutto fatto!",
-                        status: "received",
-                        popUp: false
+                        status: "received"
 
                     },
                 ],
@@ -171,22 +169,19 @@ const app = new Vue({
                     {
                         date: "10/01/2020 15:30:55",
                         text: "Hai portato a spasso il cane?",
-                        status: "sent",
-                        popUp: false
+                        status: "sent"
 
                     },
                     {
                         date: "10/01/2020 15:50:00",
                         text: "Ricordati di dargli da mangiare",
-                        status: "sent",
-                        popUp: false
+                        status: "sent"
 
                     },
                     {
                         date: "10/01/2020 16:15:22",
                         text: "Tutto fatto!",
-                        status: "received",
-                        popUp: false
+                        status: "received"
 
                     },
                 ],
@@ -200,21 +195,21 @@ const app = new Vue({
                         date: "10/01/2020 15:30:55",
                         text: "Hai portato a spasso il cane?",
                         status: "sent",
-                        popUp: false
+                     
 
                     },
                     {
                         date: "10/01/2020 15:50:00",
                         text: "Ricordati di dargli da mangiare",
                         status: "sent",
-                        popUp: false
+                      
 
                     },
                     {
                         date: "10/01/2020 16:15:22",
                         text: "Tutto fatto!",
                         status: "received",
-                        popUp: false
+                  
 
                     },
                 ],
@@ -230,7 +225,7 @@ const app = new Vue({
         //-------MI PERMETTE DI ATTIVARE L'INPUT SEARCH
         filteredUsersList() {
             return this.contacts.filter((element) => {
-                // return element.name.toLowerCase().includes(this.searchContact.toLowerCase())
+                
                 return element.name.toLowerCase().startsWith((this.searchContact.toLowerCase()))
             })
         }
@@ -250,8 +245,7 @@ const app = new Vue({
             const newmsg = {
                 date: moment().format("DD/MM/YYYY HH:mm:ss"),
                 text: this.userMessage,
-                status: "sent",
-                popUp: false
+                status: "sent"
             }
             currUser.message.push(newmsg)
             this.userMessage = ""
@@ -260,7 +254,7 @@ const app = new Vue({
 
                 setTimeout(() => {
                 this.receivedMsg(currUser)
-            }, 5000)
+            }, 1000)
         },
 
         receivedMsg(currUser) {
@@ -268,8 +262,7 @@ const app = new Vue({
             const textReceived = {
                 date: moment().format("DD/MM/YYYY HH:mm:ss"),
                 text: "OK da " + currUser.name,
-                status: "received",
-                popUp: false
+                status: "received"
 
             }
             currUser.message.push(textReceived)
@@ -278,7 +271,7 @@ const app = new Vue({
         },
 
         //---------------------------//
-        //i messaggi che riceverò mi compariranno in modo scollante 
+        //i messaggi che riceverò mi compariranno con la scrollbar automatica
         scrollToBottom() {
             this.$nextTick(() => {
                 const htm1Element = this.$refs.chatContainerScroll
@@ -287,19 +280,20 @@ const app = new Vue({
             //mi permette di recuperare tutta la lista di tutti i ref 
         },
         msgLastAccess(contact) {
-            if (!contact.message) {
+            if (contact.message.length == 0) {
                 return ""
-                
             }
 
-            const showLastMsg = contact.message.filter((msg) => msg.status === "received" || msg.status === "sent")
+            const lastTextDisplayed = contact.message[contact.message.length - 1].text
 
-            if (!showLastMsg.length) {
-                return "nessun messaggio disponibile"
-            }
-            const lastTextDisplayed = showLastMsg[showLastMsg.length - 1].text
+            let trimmeMsg = lastTextDisplayed.slice(0, 20)
 
-            return lastTextDisplayed
+            if(lastTextDisplayed.length > 20) {
+                trimmeMsg += "..."
+            } 
+
+            return trimmeMsg 
+            
         },
         activeUserLastAccess(contact) {
             if (!contact.message) {
@@ -312,20 +306,36 @@ const app = new Vue({
             if (lastMsg.length === 0) {
                 return "";
             }
-
             const lastMsgDate = lastMsg[lastMsg.length - 1].date
-
-            return this.formatTime(lastMsgDate)
+            return  this.formatTime(lastMsgDate)
+            
 
         },
-        showPopup(message) {
-            message.popUp = !message.popUp;
-        },
+        
         deleteMessage(index) {
-            return this.activeUser.message.splice(index,1)
+            this.activeUser.message.splice(index,1)
+        },
+
+        onMsgClick(message, event) {
+            this.$set(message, "popUp", true)
+
+            // event.stopPropagation()
+
+            // event.currentTarget.focus()
+
+        },
+        onFocusLost(message) {
+            this.$set(message, "popUp", false)
+
+        },
+        onPopUpClick(message) {
+            message.popUp = false
         }
         
         
-    }
+    },
+    mounted() {
+        this.activeUser = this.contacts[0];
+    },
 });
 

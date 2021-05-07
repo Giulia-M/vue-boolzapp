@@ -32,16 +32,12 @@
                 <div>
                     <div class="wr-profilo">
                         <div>
-    
                             <img class="avatar-img" src="img/avatar_io.jpg" alt="avatar">
                         </div>
                         <div class="icone-wrapper">
                             <i class="fas fa-circle-notch"></i>
-    
                             <i class="fas fa-comment-alt padd-10"></i>
-    
                             <i class="fas fa-ellipsis-v padd-r-10"></i>
-    
                         </div>
                     </div>
                 </div>
@@ -49,11 +45,9 @@
                 <!-- BAR:notifiche -->
                 <div class="sec-notification">
                     <div class="wrap-bell">
-    
                         <i class="fas fa-bell-slash"></i>
                     </div>
                     <div class="notification-parag">
-    
                         <p>Ricevi notifiche di nuovi messaggi</p>
                         <p class="underline">Attiva notifiche desktop</p>
                     </div>
@@ -61,25 +55,15 @@
     
                 <!-- INPUT DI RICERCA CONTATTI -->
                 <div class="wr-input">
-    
-                    <input v-model="searchContact"  class="input-text" type="text" placeholder="Cerca o inizia una nuova chat" @keyup.esc ="searchContact='' ">
-                    
+                    <input v-model="searchContact"  class="input-text" type="text" placeholder="Cerca o inizia una nuova chat" @keyup.esc ="searchContact=''">
                     <i class="fas fa-search pos-abs icon-search"></i>
-
-                    <i @click="searchContact = ' ' " v-if="searchContact" class="fas fa-times deleteIcon"
-                   ></i>
-                    
-                        
-                    
-                    
+                    <i @click="searchContact = ' ' " v-if="searchContact" class="fas fa-times deleteIcon"></i>
                 </div>
-    
+
                 <!-- sezione (sinistra) chat: elenco contatti   -->
                 <div class="bg-white">
-    
                     <ul>
-                        <!--  -->
-                        <li v-for=" (contact, index) in filteredUsersList" @click="toUserClick(contact)" class="dis-flex" :class="{selected: contact.avatar === activeUser.avatar }">
+                        <li v-for="(contact, index) in filteredUsersList" @click="toUserClick(contact)" class="dis-flex" :class="{selected: contact.avatar === activeUser.avatar }">
                             <div class="wr-img-chat">
                                 <img class="img-chat" :src="contact.avatar" alt="avatar">
                             </div>
@@ -128,20 +112,29 @@
                 <div class="sec-message-utente" ref="chatContainerScroll" >
                     <!-- ref="chatContainerScroll" -->
 
-                    <div class="container-flex" v-for="(message, index) in activeUser.message" :key="index" :class ="{msgReceived: message.status === 'received', msgSent : message.status === 'sent' }">
+                    <div class="container-flex" v-for="(message, index) in activeUser.message" :key="index" :class ="{msgReceived: message.status === 'received', msgSent : message.status === 'sent' }" @blur="onFocusLost(message)" tabindex="-1" 
+                    @click="onMsgClick(message, $event)">
 
                         <!-- messaggi -->
                         <p>{{message.text}}</p>
                         <p>{{formatTime(message.date)}}</p>
                         
                         <!-- POPUP -->
-                        <div :class="message.popUp === true ? 'optionDeleteMsg' : 'noneOption'">
-                            <p @click="deleteMessage(index)">Cancella Messaggio</p>
+                        <div :class="message.popUp === true ? 'optionDeleteMsg' : 'noneOption'"  @click.stop="onPopUpClick(message)">
+                            <ul class="popupStandard">
+                                <li @click="deleteMessage(index)">
+                                    Cancella Messaggio
+                                </li>
+                                <li>
+                                    Info Messaggio
+                                </li>
+                            </ul>
+                           
                         </div>
 
                         <!-- chevron popup-->
                         <div class="wrapChevron" >
-                            <i class="fas fa-chevron-down" @click="showPopup(message)"></i>
+                            <i class="fas fa-chevron-down" @click="onMsgClick(message)"></i>
                         </div>
                     </div>
                 </div>
@@ -156,7 +149,6 @@
                         
                         v-model="userMessage" class="input-message" type="text" placeholder="Scrivi un messaggio">
 
-                        
                         
                     </div>
                     <i class="fas fa-paper-plane icon-paper" v-if="userMessage" @click="enterMsg" ></i>
