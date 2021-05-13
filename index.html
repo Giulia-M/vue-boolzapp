@@ -57,7 +57,7 @@
                 <div class="wr-input">
                     <input v-model="searchContact"  class="input-text" type="text" placeholder="Cerca o inizia una nuova chat" @keyup.esc ="searchContact=''">
                     <i class="fas fa-search pos-abs icon-search"></i>
-                    <i @click="searchContact = ' ' " v-if="searchContact" class="fas fa-times deleteIcon"></i>
+                    <i @click="emptySearchContact()" v-if="searchContact" class="fas fa-times deleteIcon"  ></i>
                 </div>
 
                 <!-- sezione (sinistra) chat: elenco contatti   -->

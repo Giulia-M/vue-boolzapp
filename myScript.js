@@ -329,6 +329,9 @@ const app = new Vue({
         },
         onPopUpClick(message) {
             message.popUp = false
+        },
+        emptySearchContact() {
+            this.searchContact = ''
         }
         
         
